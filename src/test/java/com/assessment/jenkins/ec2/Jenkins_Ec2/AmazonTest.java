@@ -12,7 +12,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 
-class AmazonNavigationLinkTest {
+class AmazonTest {
 
 	final String siteURL = "https://www.amazon.in/";
 	final String driverPath = "driver/geckodriver";
@@ -30,32 +30,29 @@ class AmazonNavigationLinkTest {
 
 	@AfterEach
 	void tearDown() throws Exception {
-		// close driver
+		// 7 .close driver
 		driver.close();
 	}
 
 	@Test
-	@DisplayName("Amazon Test : Mobile Link Verfication")
-	void testMobileNavigationLink() {		
-		//find mobile link
-		WebElement mobileLink = driver.findElement(By.cssSelector("#nav-xshop > a:nth-child(3)"));
-		// test evaluation
-		assertTrue(mobileLink.isDisplayed());
-		assertTrue(mobileLink.isEnabled());
-		// click action
-		mobileLink.click();	
-		String expected = "Mobile Phones: Buy New Mobiles Online at Best Prices in India | Buy Cell Phones Online - Amazon.in";
+	@DisplayName("Amazon Home Page Title")
+	void testTitle() {
+		String expected = "Online Shopping site in India: Shop Online for Mobiles, Books, Watches, Shoes and More - Amazon.in";
 		assertEquals(expected, driver.getTitle());
 	}
 	
 	@Test
-	@DisplayName("Amazon Test : Today Deals Link Verfication")
-	void testTodaysDealNavigationLink() {		
+	@DisplayName("Amazon Link Click Test")
+	void testLink() {
 		//find mobile link
-		WebElement todayLink = driver.findElement(By.cssSelector("#nav-xshop > a:nth-child(4)"));
+		WebElement mobile = driver.findElement(By.cssSelector("#nav-xshop > a:nth-child(4)"));
 		// test evaluation
-		assertTrue(todayLink.isDisplayed());
-		assertTrue(todayLink.isEnabled());
+		assertTrue(mobile.isDisplayed());
+		assertTrue(mobile.isEnabled());
+		// click action
+		mobile.click();	
+		String expected = "Mobile Phones: Buy New Mobiles Online at Best Prices in India | Buy Cell Phones Online - Amazon.in";
+		assertEquals(expected, driver.getTitle());
 	}
 
 }

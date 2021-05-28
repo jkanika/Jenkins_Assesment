@@ -11,10 +11,12 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
+import org.openqa.selenium.support.ui.Sleeper;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
-class AmazonProductSearchTest {
+class GoogleTest {
 
-	final String siteURL = "https://www.amazon.in/";
+	final String siteURL = "https://www.google.com/";
 	final String driverPath = "driver/geckodriver";
 	WebDriver driver;
 
@@ -30,43 +32,30 @@ class AmazonProductSearchTest {
 
 	@AfterEach
 	void tearDown() throws Exception {
-		// close driver
+		// 7 .close driver
 		driver.close();
 	}
 
 	@Test
-	@DisplayName("Amazon Test :: Search for Iphone 12")
-	void testForSearchProduct() {
-		// find search box 
-		WebElement searchBox = driver.findElement(By.id("twotabsearchtextbox"));
+	@DisplayName("Google Title Test")
+	void testGoogleTitle() {
+		String expected = "Google";
+		assertEquals(expected, driver.getTitle());
+	}
+	
+	@Test
+	@DisplayName("Google Test")
+	void testGoogle() {
+		WebElement searchBox = driver.findElement(By.name("q"));
 		
 		assertTrue(searchBox.isDisplayed());
 		assertTrue(searchBox.isEnabled());
 		
 		// enter data into search field.
-		searchBox.sendKeys("Iphone 12");
+		searchBox.sendKeys("What to buy");
 		
 		//submit
 		searchBox.submit();
-		
 	}
 	
-	
-	@Test
-	@DisplayName("Amazon Test :: Search for One Plus")
-	void testForSearchProduct2() {
-		// find search box 
-		WebElement searchBox = driver.findElement(By.id("twotabsearchtextbox"));
-		
-		assertTrue(searchBox.isDisplayed());
-		assertTrue(searchBox.isEnabled());
-		
-		// enter data into search field.
-		searchBox.sendKeys("One Plus Nord");
-		
-		//submit
-		searchBox.submit();		
-	}
-
-	// TODO : Search test for min 3 more product.
 }

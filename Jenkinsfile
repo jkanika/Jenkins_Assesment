@@ -10,14 +10,14 @@ pipeline {
     	
     	stage('Compile stage') {
             steps {
-                echo '-------- This is a compile stage -----'
+                echo '-------- Compile Stage -----'
                 sh 'mvn clean compile'
             }
         }
         
         stage('Test stage') {
             steps {
-                echo '-------- This is a test stage -----'
+                echo '-------- Test stage -----'
                 sh 'mvn clean test'
             }
         }
@@ -25,14 +25,14 @@ pipeline {
         
         stage('Build stage') {
             steps {
-                echo '-------- This is a build stage -----'
+                echo '-------- Build stage -----'
                 sh 'mvn clean package -DskipsTest'
             }
         }        
         
         stage('Deploy stage') {
             steps {
-                echo '-------- This is a deploy stage -----'
+                echo '-------- Deploy stage -----'
             }
         }
     }
