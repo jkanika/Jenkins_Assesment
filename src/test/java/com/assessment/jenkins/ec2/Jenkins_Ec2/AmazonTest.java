@@ -45,7 +45,7 @@ class AmazonTest {
 	@DisplayName("Amazon Link Click Test")
 	void testLink() {
 		//find mobile link
-		WebElement mobile = driver.findElement(By.cssSelector("#nav-xshop > a:nth-child(4)"));
+		WebElement mobile = driver.findElement(By.cssSelector("#nav-xshop > a:nth-child(3)"));
 		// test evaluation
 		assertTrue(mobile.isDisplayed());
 		assertTrue(mobile.isEnabled());
